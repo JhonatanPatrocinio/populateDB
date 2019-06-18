@@ -60,6 +60,21 @@ def addMunicipios():
     )
     return add_municipio
 
+def addAtendentes():
+    add_atendentes = (
+        "INSERT INTO atendentes"
+        "(ATE_NOME, ATE_ULTIMO_ACESSO, ATE_RAMAL, ATE_EMAIL, ATE_PERFIL, ATE_STATUS)"
+        "VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\')" % (
+        faker.name(),
+        fakerDateJoined(),
+        faker.year(),
+        faker.email(),
+        'V',
+        'A'
+    )
+    )
+    return add_atendentes
+
 def returnOneMunCodigo(allResults):
     number = random.choice(allResults)[0]
     if number:
@@ -79,7 +94,6 @@ def fakerDateBirth():
 def fakerDateJoined():
     date = faker.date_time_between(start_date="-30d", end_date='now')
     dateconverted = '{}'.format(date)
-    print(dateconverted)
     return dateconverted
 
 
@@ -111,6 +125,11 @@ def main():
         # municipio_data = addMunicipios()
         # print(municipio_data)
         # cursor.execute(municipio_data)
+
+        #ADD ATENDENTES
+        atendente_data = addAtendentes()
+        print(atendente_data)
+        cursor.execute(atendente_data)
         cnx.commit()
 
     except MySQLdb.MySQLError as err:
