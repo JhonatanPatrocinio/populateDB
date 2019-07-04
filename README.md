@@ -4,7 +4,7 @@ Script para Popular DB com dados Fakes
 Dependencias para funcionar
 
 Instalar e Criar e Usar VirtualEnviroment
-  apt-get install python3-venv
+  apt-get install python3-venv\n
   python3 -m venv venv
   source venv/bin/activate
   pip install Faker
